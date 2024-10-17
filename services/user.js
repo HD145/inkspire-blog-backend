@@ -77,7 +77,7 @@ const handleUserSignin = async (req, res) => {
         console.log(token);
         
         res.cookie('token', token, {
-            httpOnly: false,  // Prevent JavaScript access to the cookie
+            httpOnly: true,  // Prevent JavaScript access to the cookie
             secure: true,   // Set this to true when you move to HTTPS
             maxAge: 3600000, // 1 hour
             sameSite: 'none', // Allow cross-origin requests
