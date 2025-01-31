@@ -26,7 +26,21 @@ const UserSchema = new mongoose.Schema({
             ref: "BLOG",
             required: true
         }
+    ],
+
+    following: [
+        {
+            type:String,
+            ref: "User" 
+        }
+    ],
+    followers: [
+        {
+            type: String,
+            ref: "User" 
+        }
     ]
+
 })
 
 const User = mongoose.model("User", UserSchema);

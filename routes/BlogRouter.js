@@ -1,5 +1,5 @@
 const express = require("express");
-const { handleBlogPost, handleAllBlogs, handleFindBlogById, handleDeleteBlog, handleUserBlogs, handleMail, handleBlogCommentPost, handleLikeBlogPost } = require("../services/blog");
+const { handleBlogPost, handleAllBlogs, handleFindBlogById, handleDeleteBlog, handleUserBlogs, handleBlogCommentPost, handleLikeBlogPost, handleGetBlogsFromFollowersAndFollowing } = require("../services/blog");
 
 const blogRouter = express.Router();
 
@@ -13,11 +13,11 @@ blogRouter.delete("/:id", handleDeleteBlog)
 
 blogRouter.post("/userBlogs", handleUserBlogs)
 
-blogRouter.post("/sendMail", handleMail)
-
 blogRouter.post("/comment/:id", handleBlogCommentPost)
 
-blogRouter.post("/likePost", handleLikeBlogPost)
+blogRouter.post("/likePost", handleLikeBlogPost);
+
+blogRouter.post("/getExplorePosts", handleGetBlogsFromFollowersAndFollowing);
 
 module.exports ={
     blogRouter

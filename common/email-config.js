@@ -1,16 +1,18 @@
+require('dotenv').config()
+
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    service: "Gmail", host: "smtp.gmail.com", port: 465, secure: true,
+    service: "Gmail", host: process.env.MAIL_HOST, port: process.env.MAIL_PORT, secure: true,
     auth: {
-        user: "workwithus200@gmail.com",
-        pass: "mxhs jyxt uner xarr",
+        user: process.env.MAIL_ID,
+        pass: process.env.MAIL_CREDENTIALS,
     },
 });
 
 async function handleSendMail(to, otp) {
     const info = await transporter.sendMail({
-        from: '<workwithus200@gmail.com>',
+        from: `<${process.env.MAIL_ID}>`,
         to,
         subject: "OTP Verification",
         text: `Hello. Your One Time Password is ${otp}`
